@@ -1,6 +1,6 @@
 import React from 'react';
 import InputBox from './inputbox';
-import OutputBox from './outputbox';
+//import OutputBox from './outputbox';
 
 
 export default class Game extends React.Component {
@@ -22,12 +22,26 @@ export default class Game extends React.Component {
     })
   }
 
+  onComputerChoice() {
+    const computerChoice = Math.floor(Math.random() * 3) + 1;
+      let output;
+      if(computerChoice===1){
+        output = 'rock';
+      } else if(computerChoice===2) {
+        output = 'scissors'
+      } else {
+        output= 'paper'
+      }
+      return output;
+  }
+
   render() {
     return (
       <div>
         <p>{this.props.title}</p>
         <InputBox onSubmit={this.onSubmit} />
-        {this.state.draw && <OutputBox />}
+        <p>{`User threw ${this.state.userInput}!`}</p>
+        {this.state.draw && `Computer threw ${this.onComputerChoice()}!`}
       </div>
     )
   }

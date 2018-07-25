@@ -13,7 +13,6 @@ export default function InputBox(props) {
         type="text"
         name="inputbox"
         placeholder="e.g. rock, paper, scissors"
-        //onChange={props.onInputChange}
       />
       <button type="submit">play!</button>
       </form>
