@@ -9,22 +9,29 @@ export default class Game extends React.Component {
     super(props)
 
     this.state = {
-      userInputChange: false
+      draw: false,
+      userInput: ''
     }
+    this.onSubmit = this.onSubmit.bind(this)
+    this.onInputChange = this.onInputChange.bind(this)
   }
 
-  toggleUserInput(value){
+  onInputChange(event) {
     this.setState({
-      userInputChange: value
+      userInput: event.target.value
     })
+  }
+  onSubmit(event){
+    event.preventDefault()
+    this.setState({ draw: true })
   }
 
   render() {
     return (
       <div>
         <p>{this.props.title}</p>
-        <InputBox onSubmit={e => this.toggleUserInput(true)}/>
-        <OutputBox />
+        <InputBox onSubmit={this.onSubmit} onInputChange={this.onInputChange}/>
+        {this.state.draw && <OutputBox />}
       </div>
     )
   }

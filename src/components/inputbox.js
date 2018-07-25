@@ -5,8 +5,14 @@ export default function InputBox(props) {
   return (
     <div>
       <label>Make Your Choice!</label>
-      <input type="text" placeholder="e.g. rock, paper, scissors" 
-      onSubmit={(e)=>props.onSubmit(e.target.value)}/>
+      <form onSubmit={props.onSubmit} >
+      <input
+        type="text"
+        placeholder="e.g. rock, paper, scissors"
+        onChange={props.onInputChange}
+      />
+      <button type="submit">play!</button>
+      </form>
     </div>
   );
 }
