@@ -1,7 +1,9 @@
+/*
 import React from 'react';
 
 
 export default function Score(props) {
+    
 
 const user = {props.user};
 
@@ -42,4 +44,4 @@ const computerChoice = {props.}
 
 
 
-
+*/

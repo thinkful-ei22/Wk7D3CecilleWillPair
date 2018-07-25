@@ -1,7 +1,7 @@
 import React from 'react';
 import InputBox from './inputbox';
 import OutputBox from './outputbox';
-import Score from './score';
+//import Score from './score';
 
 
 export default class Game extends React.Component {
