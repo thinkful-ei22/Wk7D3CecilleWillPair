@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import InputBox from './inputbox';
 import OutputBox from './outputbox';
+import Score from './score';
 
 
 export default class Game extends React.Component {
@@ -13,17 +13,14 @@ export default class Game extends React.Component {
       userInput: ''
     }
     this.onSubmit = this.onSubmit.bind(this)
-    this.onInputChange = this.onInputChange.bind(this)
   }
 
-  onInputChange(event) {
-    this.setState({
-      userInput: event.target.value
-    })
-  }
-  onSubmit(event){
+  onSubmit(event) {
     event.preventDefault()
-    this.setState({ draw: true })
+    this.setState({
+      draw: true,
+      userInput: event.target.inputbox.value
+    })
   }
 
   resetForm(event){
@@ -34,9 +31,10 @@ export default class Game extends React.Component {
     return (
       <div>
         <p>{this.props.title}</p>
-        <InputBox onSubmit={this.onSubmit} onInputChange={this.onInputChange}
-        resetForm={this.resetForm}/>
+        <InputBox onSubmit={this.onSubmit} />
+        <p>User drew {this.state.userInput} </p>
         {this.state.draw && <OutputBox />}
+        <Score user={this.state.userInput} />
       </div>
     )
   }
