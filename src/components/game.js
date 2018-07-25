@@ -1,8 +1,5 @@
 import React from 'react';
 import InputBox from './inputbox';
-import OutputBox from './outputbox';
-//import Score from './score';
-
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -23,8 +20,19 @@ export default class Game extends React.Component {
     })
   }
 
-  resetForm(event){
-    document.getElementById('box').reset();
+
+  onComputerChoice() {
+    const computerChoice = Math.floor(Math.random() * 3) + 1;
+      let output;
+      if(computerChoice===1){
+        output = 'rock';
+      } else if(computerChoice===2) {
+        output = 'scissors'
+      } else {
+        output= 'paper'
+      }
+      return output;
+
   }
 
   render() {
@@ -32,9 +40,10 @@ export default class Game extends React.Component {
       <div>
         <p>{this.props.title}</p>
         <InputBox onSubmit={this.onSubmit} />
-        <p>User drew {this.state.userInput} </p>
-        {this.state.draw && <OutputBox />}
-        <Score user={this.state.userInput} />
+
+        <p>{`User threw ${this.state.userInput}!`}</p>
+        {this.state.draw && `Computer threw ${this.onComputerChoice()}!`}
+
       </div>
     )
   }
