@@ -1,12 +1,5 @@
 import React from 'react';
 import InputBox from './inputbox';
-<<<<<<< HEAD
-//import OutputBox from './outputbox';
-=======
-import OutputBox from './outputbox';
-import Score from './score';
->>>>>>> 8202a2f924e98b07e1fda7c7d4b251b751390843
-
 
 export default class Game extends React.Component {
   constructor(props) {
