@@ -35,14 +35,55 @@ export default class Game extends React.Component {
 
   }
 
+displayWinner(computerChoice) {
+  const userChoice = this.state.userInput;
+  
+  console.log('user choice =' + userChoice);
+  console.log( 'computer choice =' + computerChoice);
+
+
+  if(userChoice === 'rock' && computerChoice ==='scissors') {
+    return 'The Winner is User';
+  }
+  else if(userChoice === 'rock' && computerChoice ==='rock') {
+    return 'Tie';
+  }
+  else if(userChoice === 'scissors' && computerChoice ==='scissors') {
+    return 'Tie';
+  }
+  else if(userChoice === 'paper' && computerChoice ==='paper') {
+    return 'Tie';
+  }
+  else if(userChoice === 'rock' && computerChoice ==='paper') {
+    return 'The Winner is Computer';
+  }
+  else if(userChoice === 'paper' && computerChoice ==='scissors') {
+    return 'The Winner is Computer';
+  }
+  else if(userChoice === 'scissors' && computerChoice ==='rock') {
+    return 'The Winner is Computer';
+  }
+  else if(userChoice === 'scissors' && computerChoice ==='paper') {
+    return 'The Winner is User';
+  }
+  else if(userChoice === 'paper' && computerChoice ==='rock') {
+    return 'The Winner is User';
+
+  }
+
+}
+
   render() {
+    const computerChoice = this.onComputerChoice();
     return (
       <div>
         <p>{this.props.title}</p>
         <InputBox onSubmit={this.onSubmit} />
 
-        <p>{`User threw ${this.state.userInput}!`}</p>
-        {this.state.draw && `Computer threw ${this.onComputerChoice()}!`}
+       {  this.state.draw && <p>{`User threw ${this.state.userInput}!`}</p>}
+
+        {this.state.draw && `Computer threw ${computerChoice}!`}
+       { this.state.draw && <p>{`${this.displayWinner(computerChoice)}`}</p>}
 
       </div>
     )
