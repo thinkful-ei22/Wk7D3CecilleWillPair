@@ -26,11 +26,16 @@ export default class Game extends React.Component {
     this.setState({ draw: true })
   }
 
+  resetForm(event){
+    document.getElementById('box').reset();
+  }
+
   render() {
     return (
       <div>
         <p>{this.props.title}</p>
-        <InputBox onSubmit={this.onSubmit} onInputChange={this.onInputChange}/>
+        <InputBox onSubmit={this.onSubmit} onInputChange={this.onInputChange}
+        resetForm={this.resetForm}/>
         {this.state.draw && <OutputBox />}
       </div>
     )
